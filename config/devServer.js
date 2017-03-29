@@ -5,7 +5,7 @@ var path = require('path');
 var webpack = require("webpack");
 var WebpackDevServer = require("webpack-dev-server");
 var webpackConfig = require('./webpack/dev.js');
-var projectConfig = require('../project.js');
+var projectConfig = require('./project.js');
 
 var __SERVER__ = {
     host: 'localhost',
@@ -20,8 +20,8 @@ webpackConfig.entry.index.unshift(
 
 var myConfig = Object.create(webpackConfig);
 var server = new WebpackDevServer(webpack(webpackConfig), {
-    publicPath: projectConfig.path.publicPath,
-    contentBase: projectConfig.path.contentBase,
+    publicPath: webpackConfig.output.publicPath,
+    contentBase: 'dist',
     hot: true,
     host: __SERVER__.host,
     port: __SERVER__.port,

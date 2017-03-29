@@ -5,13 +5,13 @@ var projectConfig = require('../project.js');
 var __ENV__ = require('../env.js');
 
 var entry = {
-    index: [path.resolve(__dirname, '../src/entry/index.js')]
+    index: [path.resolve(__dirname, '../../src/entry/index.js')]
 };
 
 var config = {
     entry,
     output: {
-        path: path.resolve(__dirname, '../dist/'),
+        path: path.resolve(__dirname, '../../dist/'),
         filename: '[name].[hash].js',
         publicPath: '',
         chunkFilename: "[name].[hash].js",
