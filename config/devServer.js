@@ -13,10 +13,10 @@ var __SERVER__ = {
 }
 
 // modify some webpack config options
-webpackConfig.entry.index.unshift(
-    `webpack-dev-server/client?http://${__SERVER__.host}:${__SERVER__.port}/`,
-    "webpack/hot/dev-server"
-);
+// webpackConfig.entry.index.unshift(
+//     `webpack-dev-server/client?http://${__SERVER__.host}:${__SERVER__.port}/`,
+//     "webpack/hot/dev-server"
+// );
 
 var myConfig = Object.create(webpackConfig);
 var server = new WebpackDevServer(webpack(webpackConfig), {

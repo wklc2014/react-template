@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "./node_modules/.bin/cross-env NODE_ENV=development node ./config/devServer.js"
+    "clean": "./node_modules/.bin/rimraf dist/*",
+    "dev": "./node_modules/.bin/cross-env NODE_ENV=development node ./config/devServer.js",
+    "prod": "./node_modules/.bin/cross-env NODE_ENV=production ./node_modules/.bin/webpack -p --config config/webpack/prod.js",
+    "start": "npm run clean && npm run dev",
+    "build": "npm run clean && npm run prod"
   },
   "keywords": [
     "react",
@@ -31,9 +35,10 @@
     "html-webpack-plugin": "^2.28.0",
     "less": "^2.7.2",
     "less-loader": "^4.0.2",
-    "node-sass": "^4.5.0",
+    "node-sass": "3.4.2",
     "open-browser-webpack-plugin": "0.0.5",
     "postcss-loader": "^1.3.3",
+    "rimraf": "^2.6.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
     "url-loader": "^0.5.8",

@@ -2,16 +2,21 @@
 npm init
 
 2. 安装依赖
-npm i webpack webpack-dev-server -D
+npm i -D webpack
+npm i -D webpack-dev-server
 
 3. 配置 webpack.config.js
 可以将开发环境和生产环境的配置文件分开
 
-3. 安装 webpack 相关插件
-npm i extract-text-webpack-plugin html-webpack-plugin html-webpack-include-assets-plugin open-browser-webpack-plugin autoprefixer -D
+4. 安装 webpack 相关插件
+npm i -D extract-text-webpack-plugin
+npm i -D html-webpack-plugin
+npm i -D html-webpack-include-assets-plugin
+npm i -D open-browser-webpack-plugin
+npm i -D autoprefixer
 
 1) extract-text-webpack-plugin
-抽离 css 样式到单独的 css 文件
+抽离 css 样式到单独的 css 文件，在 prod 环境使用
 
 2) html-webpack-plugin
 根据 html 模板生成对应的 html 文件
@@ -20,20 +25,33 @@ npm i extract-text-webpack-plugin html-webpack-plugin html-webpack-include-asset
 向生成的 html 文件注入一些引入文件，如 css 或 js
 
 4) open-browser-webpack-plugin
-自动打开浏览器特定网址
+自动打开浏览器
 
 5) autoprefixer
 处理 css 时，对 css 属性做前缀处理
 
-4. 安装 webpack 对应的 loader
-npm i babel-core babel-loader style-loader css-loader postcss-loader sass-loader url-loader expose-loader file-loader less-loader less -D
-npm install node-sass -D --registry=http://registry.npm.taobao.org
+5. 安装 webpack 相应的 loader
+npm i -D babel-core
+npm i -D babel-loader
+npm i -D css-loader
+npm i -D expose-loader
+npm i -D file-loader
+npm i -D less
+npm i -D less-loader
+npm i -D node-sass
+npm i -D postcss-loader
+npm i -D sass-loader
+npm i -D style-loader
+npm i -D url-loader
 
 1) babel-core
 2) babel-loader
 3) style-loader
+将样式以 style 标签形式插入 head 标签
 4) css-loader
+将 head 标签中的 style 标签样式合并成 css 文件
 5) postcss-loader
+css 后处理
 6) sass-loader
 7) url-loader
 8) expose-loader
@@ -48,14 +66,26 @@ note:
 3) prod 环境才将 css 抽离成单独的 css 文件
 4) sass-loader 需要 node-sass 模块支持
 
-5. 创建 babel 配置文件 .babelrc
-安装 babel 插件
-npm i -D babel-preset-es2015 babel-preset-react babel-preset-stage-0
+6. 创建 babel 配置文件 .babelrc
+安装 babel 编译配置插件
+npm i -D babel-preset-es2015
+npm i -D babel-preset-react
+npm i -D babel-preset-stage-0
+npm i -D cross-env
+npm i -D rimraf
 
-1) babel-preset-es2015
-2) babel-preset-react
-3) babel-preset-stage-0
+1) cross-env
+在命令行中定义参数，兼容 mac 和 window 系统
 
 6. 安装开发模块
-npm i -S react react-dom react-router redux react-redux
+npm i -S react
+npm i -S react-dom
+npm i -S react-router
+npm i -S redux
+npm i -S react-redux
 npm i -S jquery
+
+7. 在 package.json 文件的 scripts 属性中定义快捷命令
+"dev": "./node_modules/.bin/cross-env NODE_ENV=development node ./config/devServer.js",
+"prod": "./node_modules/.bin/cross-env NODE_ENV=production ./node_modules/.bin/webpack -p -c config/webpack/prod.js",
+"clean": "./node_modules/.bin/rimraf dist/*",

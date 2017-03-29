@@ -3,13 +3,10 @@ var path = require('path');
 var autoprefixer = require('autoprefixer');
 var projectConfig = require('../project.js');
 var __ENV__ = require('../env.js');
-
-var entry = {
-    index: [path.resolve(__dirname, '../../src/entry/index.js')]
-};
+var entryConfig = require('./entry.js');
 
 var config = {
-    entry,
+    entry: entryConfig.js,
     output: {
         path: path.resolve(__dirname, '../../dist/'),
         filename: '[name].[hash].js',

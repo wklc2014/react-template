@@ -3,28 +3,35 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var OpenBrowserPlugin = require("open-browser-webpack-plugin");
 var baseConfig = require('./base.js');
-
+var projectConfig = require('../project.js');
 var devConfig = Object.assign({}, baseConfig);
+var entryConfig = require('./entry.js');
 
 devConfig.module.loaders.push({
-    test: /\.css$/,
+    test: /\.css/,
     loader: 'style-loader!css-loader'
 }, {
-    test: /\.scss$/,
-    loader: 'sass-loader!postcss-loader!style-loader!css-loader'
+    test: /\.scss/,
+    loader: 'style-loader!css-loader!postcss-loader!sass-loader'
 }, {
-    test: /\.less$/,
-    loader: 'less-loader!postcss-loader!style-loader!css-loader'
+    test: /\.less/,
+    loader: 'style-loader!css-loader!postcss-loader!less-loader'
+})
+
+Object.keys(entryConfig.html).forEach(v => {
+    var htmlPath = entryConfig.html[v];
+    devConfig.plugins.push(
+        new HtmlWebpackPlugin({
+            title: 'react-template-' + v,
+            template: htmlPath,
+            favicon: path.resolve(__dirname, '../../src/asset/img/favicon.ico')
+        })
+    )
 })
 
 devConfig.plugins.push(
-    new HtmlWebpackPlugin({
-        title: 'react-template',
-        template: path.resolve(__dirname, '../../src/entry/index.html'),
-        favicon: path.resolve(__dirname, '../../src/asset/img/favicon.ico')
-    }),
     new OpenBrowserPlugin({
-        url: 'http://localhost:9000'
+        url: `http://${projectConfig.devServer.host}:${projectConfig.devServer.port}`
     }),
     new webpack.HotModuleReplacementPlugin()
 )
