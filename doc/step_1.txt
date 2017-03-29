@@ -1,0 +1,54 @@
+1. 生成一个 package.json 文件
+npm init
+
+2. 安装依赖
+npm i webpack webpack-dev-server -D
+
+3. 配置 webpack.config.js
+可以将开发环境和生产环境的配置文件分开
+
+3. 安装 webpack 相关插件
+npm i extract-text-webpack-plugin html-webpack-plugin html-webpack-include-assets-plugin open-browser-webpack-plugin autoprefixer -D
+
+1) extract-text-webpack-plugin
+抽离 css 样式到单独的 css 文件
+
+2) html-webpack-plugin
+根据 html 模板生成对应的 html 文件
+
+3) html-webpack-include-assets-plugin
+向生成的 html 文件注入一些引入文件，如 css 或 js
+
+4) open-browser-webpack-plugin
+自动打开浏览器特定网址
+
+5) autoprefixer
+处理 css 时，对 css 属性做前缀处理
+
+4. 安装 webpack 对应的 loader
+npm i babel-core babel-loader style-loader css-loader postcss-loader sass-loader url-loader expose-loader file-loader less-loader less -D
+
+1) babel-core
+2) babel-loader
+3) style-loader
+4) css-loader
+5) postcss-loader
+6) sass-loader
+7) url-loader
+8) expose-loader
+9) file-loader
+10) less-loader
+11) less
+
+note:
+1) less-loader 需要 less 模块支持
+2) expose-loader 注入全局变量，如 jQuery
+3) prod 环境才将 css 抽离成单独的 css 文件
+
+5. 创建 babel 配置文件 .babelrc
+安装 babel 插件
+npm i -D babel-preset-es2015 babel-preset-react babel-preset-stage-0
+
+1) babel-preset-es2015
+2) babel-preset-react
+3) babel-preset-stage-0

@@ -1,0 +1,7 @@
+1. 安装相关依赖
+npm i -D cross-env
+1) cross-env
+在命令行中定义参数，兼容 mac 和 window 系统
+
+1. 在 package.json 文件的 scripts 属性中定义快捷命令
+"dev": "./node_modules/.bin/cross-env NODE_ENV=development node ./config/devServer.js",
