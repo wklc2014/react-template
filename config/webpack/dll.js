@@ -23,18 +23,18 @@ module.exports = {
             'redux-devtools-log-monitor',
             'redux-devtools-dock-monitor',
             'moment'
-        ],
+        ]
     },
     output: {
-        path: path.resolve(__dirname, '../../dist'),
+        path: path.resolve('./', 'dist'),
         filename: '[name].dll.js',
-        library: '[name]',
+        library: '[name]'
     },
     plugins: [
         new webpack.DllPlugin({
-            path: path.resolve(__dirname, '../../dist/vendor.manifest.json'),
+            path: path.resolve('./dist/', 'vendor.manifest.json'),
             name: '[name]',
-            context: __dirname,
+            context: __dirname
         })
     ],
     stats: {

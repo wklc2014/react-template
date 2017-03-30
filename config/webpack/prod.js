@@ -3,8 +3,8 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var baseConfig = require('./base.js');
-var prodConfig = Object.assign({}, baseConfig);
 var entryConfig = require('./entry.js');
+var prodConfig = Object.assign({}, baseConfig);
 
 prodConfig.module.loaders.push({
     test: /\.css$/,
@@ -47,7 +47,8 @@ Object.keys(entryConfig.html).forEach(v => {
             },
             filename: v + '.html',
             template: htmlPath,
-            favicon: path.resolve(__dirname, '../../src/asset/img/favicon.ico')
+            favicon: path.resolve(__dirname, '../../src/asset/img/favicon.ico'),
+            chunks: [v]
         })
     )
 })

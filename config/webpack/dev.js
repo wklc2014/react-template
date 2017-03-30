@@ -12,16 +12,13 @@ devConfig.devtool = 'eval-source-map';
 
 devConfig.module.loaders.push({
     test: /\.css/,
-    // loader: 'style-loader!css-loader'
-    loader: ['style-loader', 'css-loader']
+    loader: 'style-loader!css-loader'
 }, {
     test: /\.scss/,
-    // loader: 'style-loader!css-loader!postcss-loader!sass-loader'
-    loader: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+    loader: 'style-loader!css-loader!postcss-loader!sass-loader'
 }, {
     test: /\.less/,
-    // loader: 'style-loader!css-loader!postcss-loader!less-loader'
-    loader: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
+    loader: 'style-loader!css-loader!postcss-loader!less-loader'
 })
 
 Object.keys(entryConfig.html).forEach(v => {
@@ -31,7 +28,7 @@ Object.keys(entryConfig.html).forEach(v => {
             title: 'react-template-' + v,
             filename: v + '.html',
             template: htmlPath,
-            favicon: path.resolve(__dirname, '../../src/asset/img/favicon.ico'),
+            favicon: path.resolve('./', 'src/asset/img/favicon.ico'),
             chunks: [v]
         })
     )
@@ -50,11 +47,16 @@ if (projectConfig.useDllReferencePlugin) {
     )
 }
 
+if (projectConfig.useHotLoad) {
+    devConfig.plugins.push(
+        new webpack.HotModuleReplacementPlugin()
+    )
+}
+
 devConfig.plugins.push(
     // new OpenBrowserPlugin({
     //     url: `http://${projectConfig.devServer.host}:${projectConfig.devServer.port}`
-    // }),
-    new webpack.HotModuleReplacementPlugin()
+    // })
 )
 
 module.exports = devConfig;

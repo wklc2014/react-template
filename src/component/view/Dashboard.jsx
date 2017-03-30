@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import picJPG from '../../asset/img/02.jpg';
 
 class Dashboard extends Component {
@@ -11,6 +12,9 @@ class Dashboard extends Component {
                 </h2>
                 <p>
                     <img src={picJPG} alt="" />
+                </p>
+                <p>
+                    <a href="home.html">Home</a>
                 </p>
             </div>
         );

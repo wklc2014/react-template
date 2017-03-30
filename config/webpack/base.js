@@ -57,8 +57,6 @@ if (projectConfig.useJqueryAsGlobal) {
             'window.$': 'jquery',
         })
     )
-
-
 }
 
 module.exports = config;
