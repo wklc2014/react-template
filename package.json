@@ -10,6 +10,7 @@
     "dev": "./node_modules/.bin/cross-env NODE_ENV=development node ./config/devServer.js",
     "prod": "./node_modules/.bin/cross-env NODE_ENV=production ./node_modules/.bin/webpack -p --config config/webpack/prod.js",
     "dll": "./node_modules/.bin/webpack --config config/webpack/dll.js",
+    "mock": "./node_modules/.bin/imitator -f config/imitatorfile.js -p 9001",
     "start": "npm run clean && npm run dll && npm run dev",
     "build": "npm run clean && npm run prod"
   },
@@ -38,6 +39,7 @@
     "html-webpack-include-assets-plugin": "0.0.4",
     "html-webpack-plugin": "^2.28.0",
     "ignore-styles": "^5.0.1",
+    "imitator": "0.0.7",
     "jsdom": "^9.12.0",
     "less": "^2.7.2",
     "less-loader": "^4.0.2",

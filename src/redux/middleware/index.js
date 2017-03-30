@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 
 const middlewares = [thunk];
 
+// 自定义 middleware
 const defMiddleware = store => next => action => {
     // console.log('dispatching', action)
     let result = next(action)
@@ -13,8 +14,8 @@ const defMiddleware = store => next => action => {
 middlewares.push(defMiddleware);
 
 if (__DEV__) {
-    const createLogger = require('redux-logger');
-    const logger = createLogger({
+    const reduxLogger = require('redux-logger');
+    const logger = reduxLogger.createLogger({
         level: 'info',
         collapsed: true
     });

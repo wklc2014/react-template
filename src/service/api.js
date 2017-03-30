@@ -1,4 +1,3 @@
-export default {
-    increment: '/api/increment.json'
+module.exports = {
+    increment: 'http://localhost:9001/api/increment.json'
 };
-
