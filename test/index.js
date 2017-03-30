@@ -1,0 +1,1 @@
+require('./component/TestCounter.js');

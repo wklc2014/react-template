@@ -18,7 +18,7 @@ class Counter extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            number: 151
+            number: 15111
         };
     }
 
@@ -66,7 +66,7 @@ class Counter extends Component {
                         Increment async
                     </Button>
                 </div>
-                <p>{this.state.number}</p>
+                <p className="baseLine">{this.state.number}</p>
                 <div className="box" />
             </div>
         );

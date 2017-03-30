@@ -1,0 +1,11 @@
+测试：
+安装测试框架：
+npm i -D mocha
+npm i -D chai
+npm i -D react-addons-test-utils
+npm i -D enzyme
+npm i -D jsdom
+npm i -D ignore-styles
+
+
+

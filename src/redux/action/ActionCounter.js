@@ -39,10 +39,10 @@ export function ActionIncrementIfOdd() {
 export function ActionIncrementAsync() {
     return (dispatch, getState) => {
         const { counter } = getState();
-        // dispatch(ActionDisabled(true));
+        dispatch(ActionDisabled(true));
         ServiceIncrement(counter.data, (stat, data) => {
             dispatch(ActionIncrement())
-            // dispatch(ActionDisabled(false));
+            dispatch(ActionDisabled(false));
         })
     };
 }
