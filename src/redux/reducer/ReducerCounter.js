@@ -16,6 +16,11 @@ export default function ReducerCounter(state = initStateCounter, action) {
                 data: state.data - state.add
             });
 
+        case ActionType.COUNTER_DISABLED:
+            return Object.assign({}, state, {
+                disabled: action.payload
+            });
+
         default:
             return state;
     }

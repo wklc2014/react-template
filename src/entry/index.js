@@ -7,6 +7,10 @@ import route from '../route';
 import DevTools from '../redux/store/DevTools.jsx';
 import '../asset/scss/index.scss';
 
+if (__DEV__) {
+    require('../mock');
+}
+
 const oApp = document.getElementById('app');
 
 render((

@@ -1,4 +1,5 @@
 import ActionType from '../actionType';
+import ServiceIncrement from '../../service/ServiceIncrement.js';
 
 // 导出加一的方法
 export function ActionIncrement() {
@@ -35,11 +36,14 @@ export function ActionIncrementIfOdd() {
 // 包含一个默认参数 delay
 // 返回一个方法
 // 一秒后加一
-export function ActionIncrementAsync(delay = 1000) {
-    return dispatch => {
-        setTimeout(() => {
-            dispatch(ActionIncrement());
-        }, delay);
+export function ActionIncrementAsync() {
+    return (dispatch, getState) => {
+        const { counter } = getState();
+        // dispatch(ActionDisabled(true));
+        ServiceIncrement(counter.data, (stat, data) => {
+            dispatch(ActionIncrement())
+            // dispatch(ActionDisabled(false));
+        })
     };
 }
 
