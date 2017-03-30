@@ -1,6 +1,5 @@
 import { applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import createLogger from 'redux-logger'
 
 const middlewares = [thunk];
 
@@ -14,8 +13,8 @@ const defMiddleware = store => next => action => {
 middlewares.push(defMiddleware);
 
 if (__DEV__) {
-    const reduxLogger = require('redux-logger');
-    const logger = reduxLogger.createLogger({
+    const createLogger = require('redux-logger');
+    const logger = createLogger({
         level: 'info',
         collapsed: true
     });

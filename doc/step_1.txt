@@ -13,7 +13,7 @@ npm i -D extract-text-webpack-plugin
 npm i -D html-webpack-plugin
 npm i -D html-webpack-include-assets-plugin
 npm i -D open-browser-webpack-plugin
-npm i -D autoprefixer
+npm i -S autoprefixer
 
 1) extract-text-webpack-plugin
 抽离 css 样式到单独的 css 文件，在 prod 环境使用
