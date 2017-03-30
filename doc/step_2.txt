@@ -1,4 +1,14 @@
-1. 引入 react-router
+引入 antd
 
+1. 安装 babel-plugin-import
+npm i -D babel-plugin-import
 
-
+2. 修改文件 .babelrc
+"plugins": [
+    [
+        "import", {
+            "libraryName": "antd",
+            "style": true
+        }
+    ]
+]

@@ -10,9 +10,11 @@ if (isExist) {
     results.forEach(function(file) {
         var ext = path.extname(file);
         if (ext === '.html') {
-            var name = path.basename(file, '.html');
-            jsConfig[name] = entryPath + '/' + name + '.js';
-            htmlConfig[name] = entryPath + '/' + file;
+            var htmlName = path.basename(file, '.html');
+            htmlConfig[htmlName] = entryPath + '/' + file;
+        } else if (ext === '.js') {
+            var jsName = path.basename(file, '.js');
+            jsConfig[jsName] = [entryPath + '/' + file];
         }
     })
 } else {

@@ -1,8 +1,19 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from '../component/App.jsx';
+import { Provider } from 'react-redux';
+import store from '../redux/store';
+import history from '../redux/history';
+import route from '../route';
+import DevTools from '../redux/store/DevTools.jsx';
 import '../asset/scss/index.scss';
 
 const oApp = document.getElementById('app');
 
-render(<App />, oApp);
+render((
+    <Provider store={store}>
+        <div className="full-screen">
+            {route(history, store)}
+            {__DEV__ ? <DevTools /> : null}
+        </div>
+    </Provider>
+), oApp);

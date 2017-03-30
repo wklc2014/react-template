@@ -8,7 +8,8 @@
     "clean": "./node_modules/.bin/rimraf dist/*",
     "dev": "./node_modules/.bin/cross-env NODE_ENV=development node ./config/devServer.js",
     "prod": "./node_modules/.bin/cross-env NODE_ENV=production ./node_modules/.bin/webpack -p --config config/webpack/prod.js",
-    "start": "npm run clean && npm run dev",
+    "dll": "./node_modules/.bin/webpack --config config/webpack/dll.js",
+    "start": "npm run clean && npm run dll && npm run dev",
     "build": "npm run clean && npm run prod"
   },
   "keywords": [
@@ -23,6 +24,7 @@
     "autoprefixer": "^6.7.7",
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
+    "babel-plugin-import": "^1.1.1",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-0": "^6.22.0",
@@ -35,7 +37,7 @@
     "html-webpack-plugin": "^2.28.0",
     "less": "^2.7.2",
     "less-loader": "^4.0.2",
-    "node-sass": "3.4.2",
+    "node-sass": "4.5.2",
     "open-browser-webpack-plugin": "0.0.5",
     "postcss-loader": "^1.3.3",
     "rimraf": "^2.6.1",
@@ -46,11 +48,25 @@
     "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
+    "antd": "^2.8.3",
+    "axios": "^0.15.3",
+    "classnames": "^2.2.5",
     "jquery": "^3.2.1",
+    "keymirror": "^0.1.1",
+    "lodash": "^4.17.4",
+    "mockjs": "^1.0.1-beta3",
+    "moment": "^2.18.1",
+    "pretender": "^1.4.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
-    "react-router": "^4.0.0",
-    "redux": "^3.6.0"
+    "react-router": "^3.0.2",
+    "react-router-redux": "^4.0.8",
+    "redux": "^3.6.0",
+    "redux-devtools": "^3.3.2",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.2.0",
+    "redux-logger": "^3.0.0",
+    "redux-thunk": "^2.2.0"
   }
 }

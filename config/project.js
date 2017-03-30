@@ -8,5 +8,7 @@ module.exports = {
     devServer: {
         host: 'localhost',
         port: 9000
-    }
+    },
+    // 开发阶段是否分离第三方打包插件
+    useDllReferencePlugin: true
 }

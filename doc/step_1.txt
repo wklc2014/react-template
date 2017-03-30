@@ -65,6 +65,7 @@ note:
 2) expose-loader 注入全局变量，如 jQuery
 3) prod 环境才将 css 抽离成单独的 css 文件
 4) sass-loader 需要 node-sass 模块支持
+5）node-sass 的安装需要先下载对应的二进制文件
 
 6. 创建 babel 配置文件 .babelrc
 安装 babel 编译配置插件
@@ -80,12 +81,30 @@ npm i -D rimraf
 6. 安装开发模块
 npm i -S react
 npm i -S react-dom
-npm i -S react-router
-npm i -S redux
 npm i -S react-redux
+npm i -S redux
+npm i -S redux-thunk
+npm i -S react-router@3.0.2
+npm i -S react-router-redux
+npm i -S redux-logger
+npm i -S classnames
+npm i -S lodash
+npm i -S keymirror
+npm i -S mockjs
+npm i -S antd
+npm i -S axios
+npm i -S pretender
+npm i -S redux-devtools
+npm i -S redux-devtools-log-monitor
+npm i -S redux-devtools-dock-monitor
+npm i -S moment
 npm i -S jquery
 
 7. 在 package.json 文件的 scripts 属性中定义快捷命令
 "dev": "./node_modules/.bin/cross-env NODE_ENV=development node ./config/devServer.js",
 "prod": "./node_modules/.bin/cross-env NODE_ENV=production ./node_modules/.bin/webpack -p -c config/webpack/prod.js",
 "clean": "./node_modules/.bin/rimraf dist/*",
+
+
+8. 版本问题
+react-router 安装 3.0.2
