@@ -1,3 +1,12 @@
 module.exports = {
-    increment: 'http://localhost:9001/api/increment.json'
+    increment: {
+        open: true,
+        method: 'get',
+        url: '/api/increment.json'
+    },
+    login: {
+        open: false,
+        method: 'post',
+        url: '/api/login.json'
+    },
 };

@@ -18,7 +18,7 @@ class Counter extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            number: 15111
+            number: 'this example state'
         };
     }
 
