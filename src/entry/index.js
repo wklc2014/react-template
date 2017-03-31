@@ -9,7 +9,7 @@ import '../asset/scss/index.scss';
 import projectConfig from '../../config/project.js';
 
 if (__DEV__ && !projectConfig.useProxyServer) {
-    require('../mock');
+    // require('../mock');
 }
 
 const oApp = document.getElementById('app');
