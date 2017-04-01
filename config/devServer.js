@@ -20,7 +20,8 @@ if (projectConfig.useHotLoad) {
     })
 }
 
-var webpackDevServerConfig = {
+var myConfig = Object.create(webpackConfig);
+var server = new WebpackDevServer(webpack(webpackConfig), {
     publicPath: webpackConfig.output.publicPath,
     contentBase: 'dist',
     hot: true,
@@ -33,19 +34,6 @@ var webpackDevServerConfig = {
         colors: true
     },
     historyApiFallback: true
-}
-
-if (__ENV__.__DEV__ && projectConfig.useProxyServer) {
-    webpackDevServerConfig.proxy = {
-        '/api/*': {
-            target: `http://${__SERVER__.host}:${__SERVER__.port + 1}`,
-            host: `${__SERVER__.host}:${__SERVER__.port + 1}`,
-            secure: false
-        }
-    }
-}
-
-var myConfig = Object.create(webpackConfig);
-var server = new WebpackDevServer(webpack(webpackConfig), webpackDevServerConfig);
+});
 
 server.listen(__SERVER__.port);

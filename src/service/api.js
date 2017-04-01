@@ -5,8 +5,8 @@ module.exports = {
         url: '/api/increment.json'
     },
     login: {
-        open: false,
-        method: 'post',
+        open: true,
+        method: 'get',
         url: '/api/login.json'
     },
 };

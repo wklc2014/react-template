@@ -12,7 +12,5 @@ module.exports = {
     // 开发阶段是否分离第三方打包插件
     useDllReferencePlugin: true,
     // 是否开启热加载
-    useHotLoad: true,
-    // 是否开启代理服务器
-    useProxyServer: true
+    useHotLoad: true
 }

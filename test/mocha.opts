@@ -1,0 +1,6 @@
+--compilers js:babel-core/register
+--recursive
+--require ignore-styles
+-w
+-c
+-r ./test/setup.js
