@@ -6,5 +6,8 @@ export default function (req) {
     console.info(`%c ajax path`, 'color: orange', req.url);
     console.info(`%c ajax method`, 'color: orange', req.method);
     console.info(`%c ajax status`, 'color: orange', req.status);
+    console.info(`%c ajax params`, 'color: orange', req.params);
+    console.info(`%c ajax queryParams`, 'color: orange', req.queryParams);
+    console.info(`%c ajax responseText`, 'color: orange', req.responseText);
     console.groupEnd();
 }

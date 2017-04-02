@@ -10,9 +10,7 @@ export default function ServiceIncrement(data, cb) {
         method: __METHOD__,
         params: data
     }).then(response => {
-        cb('ok', {
-            data: response.data
-        });
+        cb(response.data);
     }).catch((e) => {
         console.log('ServiceLogin is error', e);
     });
