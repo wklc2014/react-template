@@ -4,30 +4,23 @@
 var path = require('path');
 var webpack = require("webpack");
 var WebpackDevServer = require("webpack-dev-server");
-var webpackConfig = require('./webpack/dev.js');
-var projectConfig = require('./project.js');
-var __ENV__ = require('./env.js');
-
-var __SERVER__ = projectConfig.devServer;
+var webpackConfig = require('./webpack.dev.config.js');
 
 // modify some webpack config options
-if (projectConfig.useHotLoad) {
-    Object.keys(webpackConfig.entry).forEach(function (ety) {
-        webpackConfig.entry[ety].unshift(
-            `webpack-dev-server/client?http://${__SERVER__.host}:${__SERVER__.port}/`,
-            'webpack/hot/dev-server'
-        )
-    })
-}
+Object.keys(webpackConfig.entry).forEach(function (ety) {
+    webpackConfig.entry[ety].unshift(
+        'webpack-dev-server/client?http://localhost:9000/',
+        'webpack/hot/dev-server'
+    )
+})
 
-var myConfig = Object.create(webpackConfig);
 var server = new WebpackDevServer(webpack(webpackConfig), {
     publicPath: webpackConfig.output.publicPath,
     contentBase: 'dist',
     hot: true,
     inline: true,
-    host: __SERVER__.host,
-    port: __SERVER__.port,
+    host: 'localhost',
+    port: 9000,
     stats: {
         chunks: false,
         children: false,
@@ -36,4 +29,4 @@ var server = new WebpackDevServer(webpack(webpackConfig), {
     historyApiFallback: true
 });
 
-server.listen(__SERVER__.port);
+server.listen(9000);

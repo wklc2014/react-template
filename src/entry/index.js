@@ -6,7 +6,6 @@ import history from '../redux/history';
 import route from '../route';
 import DevTools from '../redux/store/DevTools.jsx';
 import '../asset/scss/index.scss';
-import projectConfig from '../../config/project.js';
 
 if (__DEV__) {
     require('../mock');
