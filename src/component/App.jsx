@@ -4,14 +4,15 @@ import NAV from './const/nav.js';
 import Title from './common/Title.jsx';
 import NavLink from './common/NavLink.jsx';
 import lodash from 'lodash';
+import PropTypes from 'prop-types';
 
 const { Footer, Sider, Content } = Layout;
 
 class App extends Component {
 
     static PropTypes = {
-        counter: React.PropTypes.number.isRequired,
-        routing: React.PropTypes.object.isRequired
+        counter: PropTypes.number.isRequired,
+        routing: PropTypes.object.isRequired
     }
 
     constructor(props) {

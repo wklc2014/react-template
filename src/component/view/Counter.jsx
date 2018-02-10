@@ -1,5 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Button } from 'antd';
+import PropTypes from 'prop-types';
 
 class Counter extends Component {
 
@@ -8,11 +9,11 @@ class Counter extends Component {
     }
 
     static PropTypes = {
-        counter: React.PropTypes.number.isRequired,
-        ActionIncrement: React.PropTypes.func.isRequired,
-        ActionDecrement: React.PropTypes.func.isRequired,
-        ActionIncrementIfOdd: React.PropTypes.func.isRequired,
-        ActionIncrementAsync: React.PropTypes.func.isRequired
+        counter: PropTypes.number.isRequired,
+        ActionIncrement: PropTypes.func.isRequired,
+        ActionDecrement: PropTypes.func.isRequired,
+        ActionIncrementIfOdd: PropTypes.func.isRequired,
+        ActionIncrementAsync: PropTypes.func.isRequired
     }
 
     constructor(props) {

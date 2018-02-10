@@ -13,11 +13,13 @@ if (__DEV__) {
 
 const oApp = document.getElementById('app');
 
-render((
+const renderContent = (
     <Provider store={store}>
         <div className="full-screen">
             {route(history, store)}
             {__DEV__ ? <DevTools /> : null}
         </div>
     </Provider>
-), oApp);
+);
+
+render(renderContent, oApp);

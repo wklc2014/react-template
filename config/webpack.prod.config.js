@@ -4,10 +4,22 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var baseConfig = require('./webpack.base.config.js');
 var entryConfig = require('./webpack.entry.js');
+var version = require('./version.js');
 
-var prodConfig = Object.assign({}, baseConfig);
+var prodConfig = Object.assign({}, baseConfig, {
+    stats: {
+        children: false,
+        assets: true,
+        colors: true,
+        version: false,
+        hash: false,
+        timings: true,
+        chunks: false,
+        chunkModules: false
+    }
+});
 
-prodConfig.module.loaders.push({
+prodConfig.module.rules.push({
     test: /\.css$/,
     loader: ExtractTextPlugin.extract('style-loader!css-loader')
 }, {
@@ -25,7 +37,7 @@ prodConfig.module.loaders.push({
 })
 
 prodConfig.plugins.push(
-    new ExtractTextPlugin('[name].[hash].css'),
+    new ExtractTextPlugin('[name].' + version + '.css'),
     new webpack.optimize.UglifyJsPlugin({
         minimize: true,
         output: {
@@ -47,8 +59,7 @@ Object.keys(entryConfig.html).forEach(v => {
             },
             filename: v + '.html',
             template: htmlPath,
-            favicon: path.resolve(__dirname, '../src/asset/img/favicon.ico'),
-            chunks: [v]
+            chunks: [v, 'common']
         })
     )
 })

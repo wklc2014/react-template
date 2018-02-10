@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 var autoprefixer = require('autoprefixer');
 var entryConfig = require('./webpack.entry.js');
+var version = require('./version.js');
 
 var __ENV__ = {
     __DEV__: process.env.NODE_ENV === 'development',
@@ -13,12 +14,12 @@ var config = {
     entry: entryConfig.js,
     output: {
         path: path.resolve(__dirname, '../dist/'),
-        filename: '[name].[hash].js',
+        filename: '[name].' + version + '.js',
         publicPath: '',
-        chunkFilename: "[name].[hash].js",
+        chunkFilename: "[name].js",
     },
     module: {
-        loaders: [{
+        rules: [{
             test: /\.js|.jsx?$/,
             loader: 'babel-loader',
             exclude: /node_modules/
@@ -31,7 +32,7 @@ var config = {
         }]
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.web.tsx', '.web.ts', '.web.jsx', '.web.js', '.ts', '.tsx', '.js', '.jsx', '.json']
     },
     plugins: [
         new webpack.DefinePlugin(__ENV__),
@@ -45,6 +46,11 @@ var config = {
                 ]
             }
         }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'common',
+            filename: 'common.' + version + '.js',
+            minChunks: 3
+        })
     ]
 }
 

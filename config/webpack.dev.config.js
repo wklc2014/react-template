@@ -7,46 +7,66 @@ var baseConfig = require('./webpack.base.config.js');
 var entryConfig = require('./webpack.entry.js');
 
 var devConfig = Object.assign({}, baseConfig, {
-    devtool: 'eval-source-map'
+    devtool: 'eval-source-map',
+    context: path.resolve(__dirname, '../src'),
+    devServer: {
+        hot: true,
+        compress: true,
+        inline: true,
+        contentBase: path.resolve(__dirname, '../dist'),
+        publicPath: ''
+    }
 });
 
-devConfig.module.loaders.push({
-    test: /\.css/,
-    loader: 'style-loader!css-loader'
+devConfig.module.rules.push({
+    test: /\.css$/,
+    use: [
+        'style-loader',
+        'css-loader'
+    ]
 }, {
-    test: /\.scss/,
-    loader: 'style-loader!css-loader!postcss-loader!sass-loader'
+    test: /\.scss$/,
+    use: [
+        'style-loader',
+        'css-loader',
+        'postcss-loader',
+        'sass-loader'
+    ]
 }, {
-    test: /\.less/,
-    loader: 'style-loader!css-loader!postcss-loader!less-loader'
+    test: /\.less$/,
+    use: [
+        'style-loader',
+        'css-loader',
+        'postcss-loader',
+        'less-loader'
+    ]
 })
 
 Object.keys(entryConfig.html).forEach(v => {
     var htmlPath = entryConfig.html[v];
     devConfig.plugins.push(
         new HtmlWebpackPlugin({
-            title: 'react-template-' + v,
             filename: v + '.html',
             template: htmlPath,
-            favicon: path.resolve(__dirname, '../src/asset/img/favicon.ico'),
-            chunks: [v]
+            chunks: [v, 'common']
         })
     )
 })
 
 devConfig.plugins.push(
-    new webpack.DllReferencePlugin({
-        context: __dirname,
-        manifest: require('../dist/vendor.manifest.json')
-    }),
-    new HtmlWebpackIncludeAssetsPlugin({
-        assets: ['vendor.dll.js'],
-        append: false
-    }),
     new webpack.HotModuleReplacementPlugin(),
-    new OpenBrowserPlugin({
-        url: 'http://localhost:9000'
-    })
+    new webpack.NamedModulesPlugin()
+    // new OpenBrowserPlugin({
+    //     url: 'http://localhost:9000'
+    // })
 )
+
+// modify some webpack config options
+Object.keys(devConfig.entry).forEach(function (ety) {
+    devConfig.entry[ety].unshift(
+        'webpack-dev-server/client?http://localhost:9000/',
+        'webpack/hot/dev-server'
+    )
+})
 
 module.exports = devConfig;

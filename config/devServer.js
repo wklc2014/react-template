@@ -6,27 +6,36 @@ var webpack = require("webpack");
 var WebpackDevServer = require("webpack-dev-server");
 var webpackConfig = require('./webpack.dev.config.js');
 
-// modify some webpack config options
-Object.keys(webpackConfig.entry).forEach(function (ety) {
-    webpackConfig.entry[ety].unshift(
-        'webpack-dev-server/client?http://localhost:9000/',
-        'webpack/hot/dev-server'
-    )
-})
-
 var server = new WebpackDevServer(webpack(webpackConfig), {
     publicPath: webpackConfig.output.publicPath,
-    contentBase: 'dist',
+    contentBase: webpackConfig.output.path,
+    noInfo: false,
+    quiet: false,
     hot: true,
     inline: true,
     host: 'localhost',
     port: 9000,
     stats: {
-        chunks: false,
         children: false,
-        colors: true
+        assets: false,
+        colors: true,
+        version: false,
+        hash: false,
+        timings: true,
+        chunks: false,
+        chunkModules: false
+    },
+    headers: {
+        'Access-Control-Allow-Origin': '*',
+        'X-react-component-tools': 'true'
     },
     historyApiFallback: true
 });
 
-server.listen(9000);
+server.listen(9000, function (err) {
+    if (err) {
+        console.log('webpack-dev-server', err);
+    } else {
+        console.log('[webpack-dev-server] is success: ', 'http://localhost:9000');
+    }
+});

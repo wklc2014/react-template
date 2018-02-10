@@ -16,6 +16,7 @@ class Dashboard extends Component {
                 <p>
                     <a href="home.html">Home</a>
                 </p>
+                <p>123</p>
             </div>
         );
     }
